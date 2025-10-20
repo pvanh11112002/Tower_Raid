@@ -13,20 +13,15 @@ public class Card
 
     // Những cái này không đổi nên để trả trực tiếp được
     public Sprite sprite { get => cardData.Sprite; }
-    public string cardName { get => cardData.CardName; }
-
-    // Cái này có thay đổi trong runtime nên để set được
-    public int Cost { get; set; }
-    public string Effect { get; set; }
+    public int Value { get; set; }
     public Card(CardDataSO data)
     {
         this.cardData = data;
-        Cost = cardData.Cost;
-        Effect = cardData.Effect;
+        Value = cardData.Value;
     }
     
     public void PerformEffect()
     {
-        Debug.Log($"Performing effect of card: {cardName} - Effect: {Effect}");
+        Debug.Log($"The value of this card is {Value}");
     }    
 }

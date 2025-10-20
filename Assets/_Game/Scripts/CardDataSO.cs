@@ -5,7 +5,5 @@ using UnityEngine;
 public class CardDataSO : ScriptableObject
 {
     [SerializeField] public Sprite Sprite;
-    [SerializeField] public string CardName;
-    [SerializeField] public string Effect;
-    [SerializeField] public int Cost;
+    [SerializeField] public int Value;
 }

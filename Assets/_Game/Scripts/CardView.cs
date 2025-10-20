@@ -1,27 +1,23 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 /// <summary>
 /// CardView giữ vai trò một lá bài
 /// </summary>
 public class CardView : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField] SortingGroup front_SortingGr;
-
-    [SerializeField] private SpriteRenderer cardSpriteRenderer;
-    [SerializeField] private TextMeshProUGUI title;
-    [SerializeField] private TextMeshProUGUI cost;
+    [SerializeField] SpriteRenderer front_SpriteRenderer;
     private Card card;
     public void InitCard(Card card)
     {
         this.card = card;
-        cardSpriteRenderer.sprite = card.sprite;
-        title.text = card.cardName;
-        cost.text = card.Cost.ToString();
+        front_SpriteRenderer.sprite = card.sprite;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -32,6 +28,14 @@ public class CardView : MonoBehaviour, IPointerClickHandler
 
     public void SetSortingOrder(int order)
     {
-        front_SortingGr.sortingOrder = order;
+        front_SpriteRenderer.sortingOrder = order;
     }
-}
+    public void FaceUp()
+    {
+        gameObject.transform.DORotate(new Vector3(0, 0, 0), 0.5f);
+    }
+    public void FaceDown()
+    {
+        gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+    }
+    }
